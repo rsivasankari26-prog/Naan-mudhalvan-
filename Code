@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard with Charts</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #1a237e;
+      margin-bottom: 15px;
+    }
+    .chart-container {
+      width: 100%;
+      max-width: 400px;
+      margin: 20px auto;
+      background: white;
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 25px;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background: #3949ab;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Naan Mudhalvan - Admin Dashboard with Charts</h1>
+
+  <div class="chart-container">
+    <h3>📈 Monthly Active Users</h3>
+    <canvas id="userChart"></canvas>
+  </div>
+
+  <div class="chart-container">
+    <h3>📊 Page Views by Section</h3>
+    <canvas id="viewsChart"></canvas>
+  </div>
+
+  <table>
+    <tr>
+      <th>Assessment</th>
+      <th>Taken</th>
+      <th>Avg Score</th>
+    </tr>
+    <tr>
+      <td>Quant Basics</td>
+      <td>12,340</td>
+      <td>72%</td>
+    </tr>
+    <tr>
+      <td>English Comprehension</td>
+      <td>9,120</td>
+      <td>68%</td>
+    </tr>
+    <tr>
+      <td>Logical Reasoning</td>
+      <td>14,001</td>
+      <td>75%</td>
+    </tr>
+  </table>
+
+  <script>
+    // Line Chart - Monthly Active Users
+    const ctx1 = document.getElementById('userChart');
+    new Chart(ctx1, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        datasets: [{
+          label: 'Active Users',
+          data: [400, 600, 800, 700, 1000, 1200, 1500],
+          borderColor: '#3949ab',
+          borderWidth: 3,
+          tension: 0.3,
+          fill: false,
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: { y: { beginAtZero: true } }
+      }
+    });
+
+    // Bar Chart - Page Views
+    const ctx2 = document.getElementById('viewsChart');
+    new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: ['Dashboard', 'Courses', 'Assessments', 'Reports', 'Profile'],
+        datasets: [{
+          label: 'Views',
+          data: [2400, 1398, 9800, 3908, 4800],
+          backgroundColor: '#1e88e5'
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: { y: { beginAtZero: true } }
+      }
+    });
+  </script>
+
+</body>
+</html>
